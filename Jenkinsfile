@@ -14,7 +14,7 @@ steps {
       }
      steps {
          script {
-           app = docker.build("docker_password/node-app")
+           app = docker.build("visakhchikku/node-app")
            app.inside {
                 sh 'echo $(curl localhost:8080)'
 }
