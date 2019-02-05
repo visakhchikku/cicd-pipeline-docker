@@ -9,9 +9,6 @@ steps {
   }
 }
  stage('Build Docker Image') {
-    when {
-          branch 'master'
-      }
      steps {
          script {
            app = docker.build("visakhchikku/node-app")
