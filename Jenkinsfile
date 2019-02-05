@@ -1,8 +1,10 @@
-}stages {
+pipeline {
+    agent any 
+    stages {
   stage('Build') {
 steps {
    echo 'Running build automation'|
-   sh ',/gradlev build --no-deamon'
+   sh ',/gradlew build --no-deamon'
    archiveArtifacts artifacts: 'dist/trainSchedule.zip'
   }
 }
@@ -25,11 +27,12 @@ steps {
         }
  steps {
     script {
-        docker.withRegistry('https://registry.hub.docker.com','docker_hub_login') {
+        docker.withRegistry('https://registry.hub.docker.com','docker_hub_login'} {
         app.push("${env.BUILD_NUMBER}")
         app.push("latest")
        }
 }
 }
 }
-}
+                            }
+                            }
