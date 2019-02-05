@@ -14,7 +14,7 @@ steps {
       }
      steps {
          script {
-           app = docker.build("docker_login_id>/node-app")
+           app = docker.build("docker_password/node-app")
            app.inside {
                 sh 'echo $(curl localhost:8080)'
 }
@@ -27,7 +27,7 @@ steps {
         }
  steps {
     script {
-        docker.withRegistry('https://registry.hub.docker.com','docker_hub_login') {
+        docker.withRegistry('https://registry.hub.docker.com','docker_password') {
         app.push("${env.BUILD_NUMBER}")
         app.push("latest")
        }
